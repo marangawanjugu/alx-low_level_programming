@@ -13,20 +13,30 @@ int main(void)
 {
 	int i;
 	int j;
+	int a, b, c, d;
 
 	for (i = 0; i <= 99; i++)
 	{
+		a = i / 10;
+		b = i % 10;
+
 		for (j = 1; j <= 99; j++)
 		{
-			putchar(i / 10 + '0');
-			putchar(i % 10 + '0');
-			putchar(' ');
-			putchar(j / 10 + '0');
-			putchar(j % 10 + '0');
-			if (!(i == 98 && j == 99))
+			c = j / 10;
+			d = j % 10;
+
+			if (a < c || (a == c && b < d))
 			{
-				putchar(',');
+				putchar(a + '0');
+				putchar(b + '0');
 				putchar(' ');
+				putchar(c + '0');
+				putchar(d + '0');
+				if (!(i == 98 && j == 99))
+				{
+					putchar(',');
+					putchar(' ');
+				}
 			}
 		}
 	}
