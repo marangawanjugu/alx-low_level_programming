@@ -18,9 +18,12 @@ void times_table(void)
 		{
 			int z = i * j;
 
-			if (z == 0)
+			if (z > 0)
 			{
-				_putchar('0');
+                                _putchar(',');
+			       	_putchar(' ');
+                                _putchar(z / 10 + '0');
+                                _putchar(z % 10 + '0');
 			}
 			else if (z <= 9)
 			{
@@ -31,10 +34,7 @@ void times_table(void)
 			}
 			else
 			{
-				_putchar(',');
-				_putchar(' ');
-				_putchar(z / 10 + '0');
-				_putchar(z % 10 + '0');
+				_putchar('0');
 			}
 		}
 		_putchar('\n');
