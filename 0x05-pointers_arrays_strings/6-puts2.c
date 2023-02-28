@@ -10,13 +10,15 @@
 
 void puts2(char *str)
 {
-	int i;
+	int c;
+	char l;
 
-	for (i = 0; i < _strlen(str); i++)
+	for (c = 0; str[c] != 0; c++)
 	{
-		if (i % 2 == 0)
+		if (c % 2 == 0)
 		{
-			_putchar(str[i]);
+			l = str[c];
+			_putchar(l);
 		}
 	}
 	_putchar('\n');
