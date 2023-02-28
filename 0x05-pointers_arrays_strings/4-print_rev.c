@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include "2-strlen.c"
 /**
  * print_rev - prints a string in reverse
  * @s: char type pointer
@@ -9,18 +9,12 @@
 
 void print_rev(char *s)
 {
-	int i, b;
+	int g, leng;
 
-	while (*s != '\0')
+	leng = _strlen(s);
+	for (g = leng - 1; g >= 0; g--)
 	{
-		i++;
-		s++;
-	}
-	s--;
-	for (b = i; b > 0; b--)
-	{
-		_putchar(*s);
-		s--;
+		_putchar(s[g]);
 	}
 	_putchar('\n');
 }
