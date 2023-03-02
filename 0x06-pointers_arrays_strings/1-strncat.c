@@ -3,8 +3,8 @@
 /**
  *_strncat - concatenates two strings
  *@dest: destination string
- *src: source array string to concatenate
- *n: number of times to append
+ *@src: source array string to concatenate
+ *@n: int type - number of times to append
  *Return:  pointer to the resulting string dest
  *
  */
