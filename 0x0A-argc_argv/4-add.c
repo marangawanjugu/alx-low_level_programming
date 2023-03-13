@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 	int i;
 	char *s;
 
-	int long x:
+	int long x;
 
 	int sum = 0;
 
