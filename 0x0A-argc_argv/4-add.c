@@ -34,10 +34,9 @@ int digitcheck(char *s)
 int main(int argc, char *argv[])
 {
 	int i;
-
-	int long x;
-
 	char *s;
+
+	int long x:
 
 	int sum = 0;
 
