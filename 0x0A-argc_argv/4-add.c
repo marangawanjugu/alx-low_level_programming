@@ -30,15 +30,10 @@ int digitcheck(char *s)
  * Return: if function runs properly else 1 if error
  *
  */
-
-int main(int argc, char *argv[])
+int main(int argc, char  *argv[])
 {
 	int i;
-	char *s;
-
-	int long x;
-
-	int sum = 0;
+	int result = 0;
 
 	if (argc > 1)
 	{
@@ -46,8 +41,7 @@ int main(int argc, char *argv[])
 		{
 			if (digitcheck(argv[i]))
 			{
-				x = strtol(argv[i], &s, 10);
-				sum += x;
+				result += atoi(argv[i]);
 			}
 			else
 			{
@@ -55,12 +49,13 @@ int main(int argc, char *argv[])
 				return (1);
 			}
 		}
-		printf("%d\n", sum);
+		printf("%d\n", result);
 		return (0);
 	}
 	else
 	{
-		printf("0\n");
+		printf("%d\n", 0);
 		return (1);
 	}
+
 }
