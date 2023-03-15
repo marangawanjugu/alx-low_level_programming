@@ -4,58 +4,35 @@
 #include <ctype.h>
 
 /**
- * digitcheck - check if the characters are digits
- * @s: string to check
- * Return: zero if not a digit else non-zero
- *
+ * main - add 2 positive numbers and print the result
+ * @argc: argument count
+ * @argv: argument vector, array of strings
+ * Description: If no number is passed to program, print 0.
+ * If one of the numbers contain non-digits, print Error.
+ * Return: 1 if error, 0 if function runs properly.
  */
 
-int digitcheck(char *s)
+int main(int argc, char *argv[])
 {
-	int i;
+	int total, i;
+	char *p;
+	int num;
 
-	for (i = 0; s[i] != '\0'; i++)
-	{
-		if (!isdigit(s[i]))
-		{
-			return (0);
-		}
-	}
-	return (1);
-}
-/**
- * main - adds positive numbers
- * @argc: argument counts
- * @argv: argument vector
- * Return: if function runs properly else 1 if error
- *
- */
-int main(int argc, char  *argv[])
-{
-	int i;
-	int result = 0;
-
+	total = 0;
 	if (argc > 1)
 	{
-		for (i = 1; i < argc; i++)
+		for (i = 1; argv[i]; i++)
 		{
-			if (digitcheck(argv[i]))
-			{
-				result += atoi(argv[i]);
-			}
+			num = strtol(argv[i], &p, 10);
+			if (!*p)
+				total += num;
 			else
 			{
 				printf("Error\n");
 				return (1);
 			}
 		}
-		printf("%d\n", result);
-		return (0);
 	}
-	else
-	{
-		printf("%d\n", 0);
-		return (1);
-	}
-
+	printf("%d\n", total);
+	return (0);
 }
