@@ -8,4 +8,4 @@ main:                                       ; This is called by the C library st
 	  mov       eax, 0
           ret
 format:
-          db        "Hello, Holberton", 0
+          db        'Hello, Holberton', 0
