@@ -12,9 +12,10 @@ void print_binary(unsigned long int n)
 	unsigned long int num;
 	int i;
 
-	for (i = 32; i >= 0; i--)
+	for (i = 8; i >= 0; i--)
 	{
 		num = (n >> i) & 1 ? 1 : 0;
-		_putchar('0' + num);
+		if ((n == 0) | (n == 1))
+			_putchar('0' + num);
 	}
 }
