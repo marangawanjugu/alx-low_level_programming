@@ -1,5 +1,6 @@
 #include "main.h"
 #include <sys/types.h>
+
 /**
  *main - copies the content of a file to another file
  *@argc: number of arguments
@@ -12,9 +13,9 @@ int main(int argc, char *argv[])
 {
 	int source_fd, dest_fd, write_file, read_file;
 	char buf[1024];
-	mode_t file_mode;
+	int file_mode;
 
-	file_mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
+	file_mode = 0664;
 
 	if (argc != 3)
 	{
