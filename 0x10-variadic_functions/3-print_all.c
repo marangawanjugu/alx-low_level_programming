@@ -24,25 +24,25 @@ void print_all(const char * const format, ...)
 		if (format[counter] == 'c')
 		{
 			c = (char)va_arg(data, int);
-			printf("%c", c);
+			printf("%c, ", c);
 		}
 		else if (format[counter] == 'i')
 		{
 			i = va_arg(data, int);
-			printf("%d", i);
+			printf("%d, ", i);
 		}
 		else if (format[counter] == 'f')
 		{
 			f = (float)va_arg(data, double);
-			printf("%f", f);
+			printf("%f, ", f);
 		}
 		else if (format[counter] == 's')
 		{
 			s = va_arg(data, char*);
 			if (s == NULL)
-				printf("(nil)");
+				printf("(nil), ");
 			else
-				printf("%s", s);
+				printf("%s, ", s);
 		}
 		counter++;
 	}
