@@ -56,7 +56,7 @@ void print_string(va_list list)
 	char *s;
 
 	s = va_arg(list, char*);
-	if (!s)
+	if (s == NULL)
 	{
 		printf("(nil)");
 	}
@@ -85,7 +85,7 @@ void print_all(const char * const format, ...)
 	va_start(list, format);
 	counter = 0;
 	j = 0;
-	while (format && format[counter])
+	while (format[counter] != '\0' && format)
 	{
 		while (specifiers[j].type)
 		{
