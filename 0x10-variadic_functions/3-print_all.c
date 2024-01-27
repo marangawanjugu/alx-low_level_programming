@@ -1,6 +1,66 @@
 #include "variadic_functions.h"
 #include <stdio.h>
 #include <stdarg.h>
+#include <stdlib.h>
+
+/**
+ *print_char - print a character
+ *@list: argument list
+ *
+ */
+
+void print_char(va_list list)
+{
+	char c;
+
+	c = va_arg(list, int);
+	printf("%c", c);
+}
+
+/**
+ *print_int - print an integer
+ *@list: argument list
+ *
+ */
+
+void print_int(va_list list)
+{
+	int i;
+
+	i = va_arg(list, int);
+	printf("%d", i);
+}
+
+/**
+ *print_float - print a float
+ *@list: argument list
+ *
+ */
+
+void print_float(va_list list)
+{
+	float f;
+
+	f = va_arg(list, double);
+	printf("%f", f);
+}
+
+/**
+ *print_string - print a string
+ *@list: argument list
+ *
+ */
+
+void print_string(va_list list)
+{
+	char *s;
+
+	s = va_arg(list, char*);
+	if (s == NULL)
+		printf("(nil)");
+	else
+		printf("%s", s);
+}
 
 /**
  *print_all - prints anything
@@ -10,43 +70,35 @@
 
 void print_all(const char * const format, ...)
 {
-	char c;
-	int i;
-	float f;
-	char *s;
-	int counter;
-	va_list data;
+	format_specifier specifiers[] = {
+		{'c', print_char},
+		{'i', print_int},
+		{'f', print_float},
+		{'s', print_string},
+		{'\0', NULL},
+	};
+	va_list list;
+	int counter, j;
+	char *separator = "";
 
-	va_start(data, format);
+	va_start(list, format);
 	counter = 0;
+	j = 0;
 	while (format[counter] != '\0')
 	{
-		if (format[counter] == 'c')
+		while (specifiers[j].type)
 		{
-			c = (char)va_arg(data, int);
-			printf("%c, ", c);
+			if (specifiers[j].type == format[counter])
+			{
+				printf("%s", separator);
+				specifiers[j].f(list);
+				separator = ", ";
+			}
+			j++;
 		}
-		else if (format[counter] == 'i')
-		{
-			i = va_arg(data, int);
-			printf("%d, ", i);
-		}
-		else if (format[counter] == 'f')
-		{
-			f = (float)va_arg(data, double);
-			printf("%f, ", f);
-		}
-		else if (format[counter] == 's')
-		{
-			s = va_arg(data, char*);
-			if (s == NULL)
-				printf("(nil), ");
-			else
-				printf("%s", s);
-		}
+		j = 0;
 		counter++;
 	}
-	va_end(data);
+	va_end(list);
 	printf("\n");
 }
-
