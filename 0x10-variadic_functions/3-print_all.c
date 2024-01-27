@@ -85,7 +85,7 @@ void print_all(const char * const format, ...)
 	va_start(list, format);
 	counter = 0;
 	j = 0;
-	while (format[counter] != '\0')
+	while (format && format[counter])
 	{
 		while (specifiers[j].type)
 		{
