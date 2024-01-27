@@ -95,10 +95,10 @@ void print_all(const char * const format, ...)
 				specifiers[j].f(list);
 				separator = ", ";
 			}
-			j++;
+			++j;
 		}
 		j = 0;
-		counter++;
+		++counter;
 	}
 	va_end(list);
 	printf("\n");
