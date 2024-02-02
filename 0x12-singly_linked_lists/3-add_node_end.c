@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "_strlen.c"
 
 /**
  *add_node_end - add new node at the end of the linked list
@@ -13,18 +12,22 @@
  */
 list_t *add_node_end(list_t **head, const char *str)
 {
+	char *duplicate;
+	int length;
 	list_t *new_node, *last_node;
 
 	new_node = malloc(sizeof(list_t));
 	if (new_node == NULL)
 		return (NULL);
-	new_node->str = strdup(str);/*duplicate the string*/
-	if (new_node->str == NULL)
+	duplicate = strdup(str);/*duplicate the string*/
+	if (str == NULL)
 	{
 		free(new_node);
 		return (NULL);
 	}
-	new_node->len = _strlen(new_node->str);
+	for (length = 0; str[length] != '\0'; length++)
+	new_node->str = duplicate;
+	new_node->len = length;
 	new_node->next = NULL;/*set the next field of new_node to NULL*/
 	if (*head == NULL)/*update the head point to point to the new_node*/
 	{
