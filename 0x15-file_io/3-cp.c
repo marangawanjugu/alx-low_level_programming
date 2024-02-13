@@ -25,8 +25,7 @@ void error_handling(int exit_code, const char *error_message)
 */
 void copy_file(const char *file_src, const char *file_dest)
 {
-	int fd_src, fd_dest;
-	ssize_t read_contents, write_contents;
+	int fd_src, fd_dest, read_contents, write_contents;
 	char buffer[BUF_SIZE];
 
 	fd_src  = open(file_src, O_RDONLY);
