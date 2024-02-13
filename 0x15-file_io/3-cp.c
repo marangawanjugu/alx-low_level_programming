@@ -38,7 +38,7 @@ void copy_file(const char *file_src, const char *file_dest)
 			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	if (fd_dest == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file_dest);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_dest);
 		exit(99);
 	}
 	while ((read_contents = read(fd_src, buffer, BUF_SIZE)) > 0)
@@ -46,7 +46,7 @@ void copy_file(const char *file_src, const char *file_dest)
 		write_contents = write(fd_dest, buffer, read_contents);
 		if (write_contents == -1 || write_contents != read_contents)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file_dest);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_dest);
 			exit(99);
 		}
 	}
